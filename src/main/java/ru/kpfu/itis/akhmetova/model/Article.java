@@ -1,23 +1,47 @@
 package ru.kpfu.itis.akhmetova.model;
 
-public class Article {
-    private int id;
-    private String subject;
-    private String title;
-    private String content;
+import javax.persistence.*;
+import java.util.List;
 
-    public Article(int id, String subject, String title, String content) {
-        this.id = id;
+@Entity
+@Table(name = "article")
+public class Article {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    private String subject;
+
+    private String title;
+
+    private String text;
+
+    private String photo;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ArticleComment> comments;
+
+    public Article(String subject, String title, String text, String photo, User user) {
         this.subject = subject;
         this.title = title;
-        this.content = content;
+        this.text = text;
+        this.photo = photo;
+        this.user = user;
     }
 
-    public int getId() {
+    public Article() {
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,11 +61,35 @@ public class Article {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getText() {
+        return text;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<ArticleComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<ArticleComment> comments) {
+        this.comments = comments;
     }
 }
