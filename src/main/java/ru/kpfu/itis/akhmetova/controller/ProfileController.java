@@ -1,5 +1,6 @@
 package ru.kpfu.itis.akhmetova.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,13 +13,10 @@ import ru.kpfu.itis.akhmetova.service.UserService;
 
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Controller
 public class ProfileController {
     private final UserService userService;
-
-    public ProfileController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/profile")

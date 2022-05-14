@@ -1,6 +1,6 @@
 package ru.kpfu.itis.akhmetova.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,16 +11,11 @@ import ru.kpfu.itis.akhmetova.service.UserService;
 
 import javax.validation.Valid;
 
+@RequiredArgsConstructor
 @Controller
 public class SignUpController {
 
     private final UserService userService;
-
-    @Autowired
-    public SignUpController(UserService userService) {
-        this.userService = userService;
-    }
-
 
     @GetMapping("signUp")
     public String signUp(Authentication authentication, Model model){

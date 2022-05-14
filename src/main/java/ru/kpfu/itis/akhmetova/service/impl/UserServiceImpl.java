@@ -1,6 +1,6 @@
 package ru.kpfu.itis.akhmetova.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
 
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,21 +23,17 @@ public class UserServiceImpl implements UserService {
 //    @Value("${server.port}")
 //    String userDto;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
-
     @Override
     public void signUp(SignUpForm form) {
-        User newUser = new User(
-                form.getEmail(),
-                passwordEncoder.encode(form.getPassword()),
-                form.getName(),
-                UUID.randomUUID().toString(),
-                User.Role.USER,
-                User.State.NOT_CONFIRMED
-                );
+        User newUser = User.builder()
+                .name(form.getName())
+                .email(form.getEmail())
+                .password(passwordEncoder.encode(form.getPassword()))
+                .confirmCode(UUID.randomUUID().toString())
+                .state(User.State.CONFIRMED)
+                .role(User.Role.USER)
+                .build();
+
         userRepository.save(newUser);
 
 //        TODO

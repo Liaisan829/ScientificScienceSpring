@@ -3,5 +3,5 @@
 <#macro title>Главная страница</#macro>
 
 <#macro content>
-    <p><a href="/allArticles">Перейти к статьям</a></p>
+    <p><a href="/articles">Перейти к статьям</a></p>
 </#macro>
