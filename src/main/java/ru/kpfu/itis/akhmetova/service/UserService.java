@@ -1,8 +1,11 @@
 package ru.kpfu.itis.akhmetova.service;
 
-import ru.kpfu.itis.akhmetova.dto.CreateUserDto;
-import ru.kpfu.itis.akhmetova.dto.UserDto;
+import ru.kpfu.itis.akhmetova.dto.SignUpForm;
+import ru.kpfu.itis.akhmetova.model.User;
+
+import java.util.Optional;
 
 public interface UserService {
-    UserDto save(CreateUserDto createUserDto);
+    void signUp(SignUpForm form);
+    Optional<User> getUserByEmail(String email);
 }

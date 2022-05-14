@@ -11,6 +11,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    public enum Role {
+        USER, ADMIN
+    };
+
+    public enum State {
+        NOT_CONFIRMED, CONFIRMED, DELETED, BANNED
+    };
+
     @Size(min = 2, max = 20, message = "Name should contain from 2 to 20 symbols")
     private String name;
 
@@ -21,7 +29,14 @@ public class User {
     @Column(nullable = false, length = 64)
     private String password;
 
-    private String avatar;
+    @Column(length = 64)
+    private String confirmCode;
+
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+
+    @Enumerated(value = EnumType.STRING)
+    private State state;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Article> articles;
@@ -34,15 +49,21 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
-//        TODO доделать аватарку, подключить cloudinary
-//        this.avatar = avatar;
     }
 
     public User(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
-//        this.avatar = avatar;
+    }
+
+    public User(String name, String email, String password, String confirmCode, Role role, State state) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.confirmCode = confirmCode;
+        this.role = role;
+        this.state = state;
     }
 
     public User() {
@@ -80,12 +101,28 @@ public class User {
         this.name = name;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getConfirmCode() {
+        return confirmCode;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setConfirmCode(String confirmCode) {
+        this.confirmCode = confirmCode;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public List<Article> getArticles() {

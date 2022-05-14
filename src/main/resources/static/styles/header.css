@@ -10,7 +10,6 @@ header {
 
 a {
     text-decoration: none;
-    color: white;
     font-weight: normal;
     transition: transform 100ms;
 }
@@ -25,6 +24,7 @@ a:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .nav-bar h1 {
@@ -39,6 +39,8 @@ a:hover {
     font-size: 40px;
     margin: 0 auto;
     padding-right: 20px;
+    color: white;
+
 }
 
 .menu-search {
@@ -58,6 +60,7 @@ a:hover {
 .menu-flex a {
     padding-right: 45px;
     font-size: 25px;
+    color: white;
 }
 
 .search-flex {
@@ -83,3 +86,4 @@ a:hover {
     color: white;
     font-size: 20px;
 }
+
