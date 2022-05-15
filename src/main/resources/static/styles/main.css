@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.content{
+    max-width: 1300px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+}
+
+.links p a{
+    text-decoration: none;
+    color: black;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.image img{
+    height: 400px;
+    width: 400px;
+}

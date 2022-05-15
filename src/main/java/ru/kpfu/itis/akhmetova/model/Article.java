@@ -24,8 +24,6 @@ public class Article {
 
     private String text;
 
-    private String photo;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;

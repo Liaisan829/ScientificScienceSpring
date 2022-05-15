@@ -19,20 +19,7 @@
             <a class="nav-link" href="/profile">Личный кабинет</a>
         </div>
     </div>
-    <div class="menu-search">
-        <div class="menu-flex">
-            <a href="#">Health</a>
-            <a href="#">Science</a>
-            <a href="#">Home|Garden</a>
-            <a href="#">Tech</a>
-            <a href="#">Animal</a>
-            <a href="#">Culture</a>
-        </div>
-        <div class="search-flex">
-            <p><input type="search" name="q" class="search-field" placeholder="Поиск по сайту">
-                <input type="submit" class="searchButton" value="Найти"></p>
-        </div>
-    </div>
+
 </header>
 
 <main>

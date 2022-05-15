@@ -17,7 +17,6 @@ public class ArticleDto {
     private Integer id;
     private String title;
     private String text;
-    private String photo;
     private Integer userId;
     private String userName;
 
@@ -26,7 +25,6 @@ public class ArticleDto {
                 .id(article.getId())
                 .title(article.getTitle())
                 .text(article.getText())
-                .photo(article.getPhoto())
                 .userId(article.getUser().getId())
                 .userName(article.getUser().getName())
                 .build();

@@ -11,7 +11,6 @@ header {
 a {
     text-decoration: none;
     font-weight: normal;
-    transition: transform 100ms;
 }
 
 a:hover {
@@ -41,49 +40,5 @@ a:hover {
     padding-right: 20px;
     color: white;
 
-}
-
-.menu-search {
-    background-color: #151538;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 40px 0 40px;
-}
-
-.menu-flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-top: 30px;
-}
-
-.menu-flex a {
-    padding-right: 45px;
-    font-size: 25px;
-    color: white;
-}
-
-.search-flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-
-}
-
-.search-flex input {
-    height: 30px;
-}
-
-.search-field{
-    background-color: white;
-    border: none;
-    width: 200px;
-}
-
-.searchButton{
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
 }
 

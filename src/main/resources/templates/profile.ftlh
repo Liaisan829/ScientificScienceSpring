@@ -10,7 +10,7 @@
 <#macro content>
     <div class="aside">
         <#if user.role == "ADMIN">
-            <a href="/accounts">Перейти в настройки - Администратор</a>
+            <a href="#">Перейти в настройки - Администратор</a>
         </#if>
         <a href="/articles">Ваши посты</a>
         <a href="profile/update">Изменить данные</a>
