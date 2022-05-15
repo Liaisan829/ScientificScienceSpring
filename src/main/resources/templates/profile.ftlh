@@ -12,7 +12,7 @@
         <#if user.role == "ADMIN">
             <a href="#">Перейти в настройки - Администратор</a>
         </#if>
-        <a href="/articles">Ваши посты</a>
+        <a href="/myArticles">Ваши посты</a>
         <a href="profile/update">Изменить данные</a>
         <a href="/logout">Выход</a>
     </div>

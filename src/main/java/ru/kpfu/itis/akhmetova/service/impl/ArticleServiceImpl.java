@@ -7,6 +7,7 @@ import ru.kpfu.itis.akhmetova.dto.ArticleForm;
 import ru.kpfu.itis.akhmetova.model.Article;
 import ru.kpfu.itis.akhmetova.model.User;
 import ru.kpfu.itis.akhmetova.repository.ArticleRepository;
+import ru.kpfu.itis.akhmetova.repository.UserRepository;
 import ru.kpfu.itis.akhmetova.service.ArticleService;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleRepository articleRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<ArticleDto> getAllArticles() {
@@ -30,7 +32,10 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void save(ArticleForm form, User user) {
+    public void save(ArticleForm form, Integer userId) {
+
+        User user = userRepository.getById(userId);
+
         Article article = Article.builder()
                 .title(form.getTitle())
                 .text(form.getText())

@@ -30,10 +30,10 @@ public class ArticleController {
     }
 
     @PostMapping("/articles")
-    public String addArticle(@RequestBody ArticleForm form, Authentication authentication) {
+    public String addArticle(ArticleForm form, Authentication authentication) {
         User user = ((AccountUserDetails) authentication.getPrincipal()).getUser();
-        articleService.save(form, user);
-        return "redirect:/";
+        articleService.save(form, user.getId());
+        return "articles";
     }
 
 }

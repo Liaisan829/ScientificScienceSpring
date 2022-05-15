@@ -41,8 +41,8 @@
 
         <div class="addArticle">
             <form action="/articles" method="post">
-                <input type="text" placeholder="Название">
-                <input type="text" placeholder="Содержание">
+                <input type="text" name="title" placeholder="Название">
+                <input type="text" name="text" placeholder="Содержание">
                 <button type="submit">Добавить</button>
             </form>
         </div>

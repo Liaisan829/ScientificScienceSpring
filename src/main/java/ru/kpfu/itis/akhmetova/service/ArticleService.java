@@ -9,5 +9,5 @@ import java.util.List;
 public interface ArticleService {
     List<ArticleDto> getAllArticles();
     List<ArticleDto> getUserArticles(Integer userId);
-    void save(ArticleForm form, User user);
+    void save(ArticleForm form, Integer userId);
 }
