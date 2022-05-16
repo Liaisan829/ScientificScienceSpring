@@ -2,6 +2,7 @@ package ru.kpfu.itis.akhmetova.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kpfu.itis.akhmetova.dto.ArticleDto;
 import ru.kpfu.itis.akhmetova.dto.ArticleForm;
 import ru.kpfu.itis.akhmetova.model.Article;
@@ -50,5 +51,11 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<ArticleDto> searchPostByTitle(String title) {
         return fromModelList(articleRepository.findAllByTitleLike('%' + title + '%'));
+    }
+
+    @Transactional
+    @Override
+    public void deleteArticleById(Integer articleId) {
+        articleRepository.deleteArticleById(articleId);
     }
 }

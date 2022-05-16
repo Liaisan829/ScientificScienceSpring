@@ -32,7 +32,7 @@ public class ArticleController {
     public String addArticle(ArticleForm form, Authentication authentication) {
         User user = ((AccountUserDetails) authentication.getPrincipal()).getUser();
         articleService.save(form, user.getId());
-        return "articles";
+        return "redirect:/articles";
     }
 
     @GetMapping(value = "articles/{title}", produces = MediaType.APPLICATION_JSON_VALUE)

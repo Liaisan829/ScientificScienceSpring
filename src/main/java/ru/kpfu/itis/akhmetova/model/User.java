@@ -47,7 +47,7 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private State state;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Article> articles;
 
     @OneToMany(cascade = CascadeType.ALL)

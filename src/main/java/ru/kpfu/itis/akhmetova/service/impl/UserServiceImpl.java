@@ -5,13 +5,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.akhmetova.dto.SignUpForm;
+import ru.kpfu.itis.akhmetova.dto.UserDto;
 import ru.kpfu.itis.akhmetova.model.User;
 import ru.kpfu.itis.akhmetova.repository.UserRepository;
 import ru.kpfu.itis.akhmetova.service.UserService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import static ru.kpfu.itis.akhmetova.dto.UserDto.fromModel;
+import static ru.kpfu.itis.akhmetova.dto.UserDto.fromModelList;
 
 @RequiredArgsConstructor
 @Service
@@ -49,5 +54,27 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> getUserByEmail(String email) {
         return userRepository.getUserByEmail(email);
+    }
+
+    @Override
+    public void update(UserDto userDto, String email) {
+        userRepository.updateUser(userDto.getName(), passwordEncoder.encode(userDto.getPassword()), email);
+    }
+
+    @Override
+    public List<UserDto> getAllUsers() {
+        return fromModelList(userRepository.findAll());
+    }
+
+    @Override
+    public UserDto addUser(UserDto userDto) {
+        return fromModel(userRepository.save(
+                User.builder()
+                        .name(userDto.getName())
+                        .email(userDto.getEmail())
+                        .password(userDto.getPassword())
+                        .role(User.Role.USER)
+                        .state(User.State.CONFIRMED)
+                        .build()));
     }
 }

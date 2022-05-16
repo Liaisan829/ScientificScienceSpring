@@ -1,5 +1,28 @@
-body{
+body, p{
     margin: 0;
     padding: 0;
 }
 
+.content{
+    max-width: 1300px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.aside, .profile{
+    border: 1px solid #333333;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.aside a, .profile p{
+    color: #2B2B5C;
+    font-size: 20px;
+    margin-bottom: 10px;
+}

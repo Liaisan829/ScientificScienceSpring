@@ -6,17 +6,24 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <#macro title>Ваши статьи</#macro>
+    <link rel="stylesheet" href="styles/myArticles.css">
     <#include "base.ftlh"/>
+
 </head>
 <body>
 <#macro content>
     <div class="articles">
+        <h1>Ваши статьи</h1>
+
         <#list articles as article>
             <div class="article">
                 <p>${article.title}</p>
                 <p>${article.text}</p>
                 <p>${article.userId}</p>
                 <p>${article.userName}</p>
+                <form action="/myArticles/${article.id}/delete" method="post">
+                    <input type="submit" value="Удалить">
+                </form>
             </div>
         </#list>
     </div>
