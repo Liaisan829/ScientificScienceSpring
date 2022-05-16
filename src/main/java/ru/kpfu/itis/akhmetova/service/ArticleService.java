@@ -10,4 +10,5 @@ public interface ArticleService {
     List<ArticleDto> getAllArticles();
     List<ArticleDto> getUserArticles(Integer userId);
     void save(ArticleForm form, Integer userId);
+    List<ArticleDto> searchPostByTitle(String title);
 }

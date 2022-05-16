@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
     List<Article> findAllByUserId(Integer userId);
-
+    List<Article> findAllByTitleLike(String title);
     void save(ArticleForm form);
 }

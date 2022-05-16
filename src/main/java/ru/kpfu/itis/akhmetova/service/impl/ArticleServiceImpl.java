@@ -12,6 +12,8 @@ import ru.kpfu.itis.akhmetova.service.ArticleService;
 
 import java.util.List;
 
+import static ru.kpfu.itis.akhmetova.dto.ArticleDto.fromModelList;
+
 @RequiredArgsConstructor
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -23,12 +25,12 @@ public class ArticleServiceImpl implements ArticleService {
     public List<ArticleDto> getAllArticles() {
         List<Article> articleList = articleRepository.findAll();
 
-        return ArticleDto.fromModelList(articleList);
+        return fromModelList(articleList);
     }
 
     @Override
     public List<ArticleDto> getUserArticles(Integer userId) {
-        return ArticleDto.fromModelList(articleRepository.findAllByUserId(userId));
+        return fromModelList(articleRepository.findAllByUserId(userId));
     }
 
     @Override
@@ -43,5 +45,10 @@ public class ArticleServiceImpl implements ArticleService {
                 .build();
 
         articleRepository.save(article);
+    }
+
+    @Override
+    public List<ArticleDto> searchPostByTitle(String title) {
+        return fromModelList(articleRepository.findAllByTitleLike('%' + title + '%'));
     }
 }

@@ -1,12 +1,11 @@
 package ru.kpfu.itis.akhmetova.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.akhmetova.dto.ArticleDto;
 import ru.kpfu.itis.akhmetova.dto.ArticleForm;
 import ru.kpfu.itis.akhmetova.model.Article;
@@ -34,6 +33,12 @@ public class ArticleController {
         User user = ((AccountUserDetails) authentication.getPrincipal()).getUser();
         articleService.save(form, user.getId());
         return "articles";
+    }
+
+    @GetMapping(value = "articles/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<ArticleDto> searchPostByTitle(@PathVariable("title") String title) {
+        return articleService.searchPostByTitle(title);
     }
 
 }

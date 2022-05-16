@@ -22,31 +22,72 @@
             <a href="#">Culture</a>
         </div>
         <div class="search-flex">
-            <p><input type="search" name="q" class="search-field" placeholder="Поиск по сайту">
+            <p><input type="search" name="q" class="search-field" placeholder="Поиск по сайту"
+                      onkeyup="showResult(this.value)">
                 <input type="submit" class="searchButton" value="Найти"></p>
         </div>
     </div>
 
     <div class="content">
-        <div class="articles">
-            <#list articles as article>
-                <div class="article">
-                    <p>${article.title}</p>
-                    <p>${article.text}</p>
-                    <p>${article.userId}</p>
-                    <p>${article.userName}</p>
-                </div>
-            </#list>
-        </div>
 
-        <div class="addArticle">
-            <form action="/articles" method="post">
-                <input type="text" name="title" placeholder="Название">
-                <input type="text" name="text" placeholder="Содержание">
-                <button type="submit">Добавить</button>
-            </form>
+        <table id="articles_table">
+
+        </table>
+
+        <div class="article_content">
+
+            <div class="articles">
+                <h1>Статьи</h1>
+
+                <#list articles as article>
+                    <div class="article">
+                        <h5>${article.title}</h5>
+                        <p>${article.text}</p>
+                        <p>${article.userId}</p>
+                        <p>${article.userName}</p>
+                    </div>
+                </#list>
+            </div>
+
+            <div class="addArticle">
+                <form action="/articles" method="post">
+                    <input type="text" name="title" placeholder="Название">
+                    <input type="text" name="text" placeholder="Содержание">
+                    <button type="submit">Добавить</button>
+                </form>
+            </div>
         </div>
     </div>
 </#macro>
+
+<script>
+    function showResult(title) {
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                let html =
+                    '<h1>Результат поиска</h1>' +
+                    '<thead>' +
+                    '<th>Название</th>' +
+                    '<th>Содержание</th>' +
+                    '<th>Автор</th>' +
+                    '</thead>'
+
+                let response = JSON.parse(this.response);
+
+                for (let i = 0; i < response.length; i++) {
+                    html += '<tr>';
+                    html += '<td>' + response[i]['title'] + '</td>';
+                    html += '<td>' + response[i]['text'] + '</td>';
+                    html += '<td>' + response[i]['userName'] + '</td>';
+                    html += '</tr>';
+                }
+                document.getElementById('articles_table').innerHTML = html;
+            }
+        }
+        xmlhttp.open("GET", "/articles/" + title, true);
+        xmlhttp.send();
+    }
+</script>
 </body>
 </html>

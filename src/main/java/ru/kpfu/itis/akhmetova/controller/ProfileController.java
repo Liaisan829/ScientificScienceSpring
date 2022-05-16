@@ -27,7 +27,6 @@ public class ProfileController {
         Optional<User> userByEmail = userService.getUserByEmail(userDetails.getUsername());
         if(userByEmail.isPresent()){
             User user = userByEmail.get();
-            System.out.println(user);
             model.addAttribute("user", user);
         }
         return "profile";
