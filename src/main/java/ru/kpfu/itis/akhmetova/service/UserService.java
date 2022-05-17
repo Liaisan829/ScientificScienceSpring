@@ -13,4 +13,5 @@ public interface UserService {
     void update(UserDto userDto, String email);
     List<UserDto> getAllUsers();
     UserDto addUser(UserDto userDto);
+    UserDto getUserById(Integer userId);
 }

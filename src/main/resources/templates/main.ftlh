@@ -15,9 +15,7 @@
     <div class="content">
         <div class="links">
             <p><a href="/articles">Перейти к статьям</a></p>
-            <p><a href="/articles">Перейти к статьям</a></p>
-            <p><a href="/articles">Перейти к статьям</a></p>
-            <p><a href="/articles">Перейти к статьям</a></p>
+            <p><a href="/reviews">Перейти к отзывам</a></p>
         </div>
 
         <div class="image">

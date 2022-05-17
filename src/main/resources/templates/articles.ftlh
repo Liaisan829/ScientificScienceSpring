@@ -38,19 +38,22 @@
 
             <div class="articles">
                 <h1>Статьи</h1>
-
-                <#list articles as article>
-                    <div class="article">
-                        <h5>${article.title}</h5>
-                        <p>${article.text}</p>
-                        <p>${article.userId}</p>
-                        <p>${article.userName}</p>
-                    </div>
-                </#list>
+                <#if articles?has_content>
+                    <#list articles as article>
+                        <div class="article">
+                            <a href="/articles/${article.id}"><h5>${article.title}</h5></a>
+<#--                            <p>${article.title}</p>-->
+                            <p>${article.text}</p>
+                            <p>Автор статьи: ${article.userName}</p>
+                        </div>
+                    </#list>
+                <#else>
+                    <p>На данный момент нет статей. Будьте первым!</p>
+                </#if>
             </div>
 
             <div class="addArticle">
-                <form action="/articles" method="post">
+                <form action="/articles/add" method="post">
                     <input type="text" name="title" placeholder="Название">
                     <input type="text" name="text" placeholder="Содержание">
                     <button type="submit">Добавить</button>
@@ -66,7 +69,6 @@
         xmlhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 let html =
-                    '<h1>Результат поиска</h1>' +
                     '<thead>' +
                     '<th>Название</th>' +
                     '<th>Содержание</th>' +

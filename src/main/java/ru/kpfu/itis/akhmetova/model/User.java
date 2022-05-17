@@ -53,4 +53,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL)
     private List<ArticleComment> articleComments;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
 }

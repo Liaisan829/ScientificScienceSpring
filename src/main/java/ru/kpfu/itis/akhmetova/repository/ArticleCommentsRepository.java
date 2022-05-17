@@ -12,4 +12,7 @@ public interface ArticleCommentsRepository extends JpaRepository<ArticleComment,
             "(select id from article where article.user_id = :user_id)",
             nativeQuery = true)
     List<ArticleComment> getArticleCommentByUserId(@Param("user_id") Integer userId);
+
+
+    List<ArticleComment> getArticleCommentsByArticleId(Integer articleId);
 }

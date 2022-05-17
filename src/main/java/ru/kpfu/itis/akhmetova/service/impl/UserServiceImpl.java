@@ -77,4 +77,9 @@ public class UserServiceImpl implements UserService {
                         .state(User.State.CONFIRMED)
                         .build()));
     }
+
+    @Override
+    public UserDto getUserById(Integer userId) {
+        return fromModel(userRepository.getById(userId));
+    }
 }

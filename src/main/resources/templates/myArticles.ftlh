@@ -17,10 +17,9 @@
 
         <#list articles as article>
             <div class="article">
-                <p>${article.title}</p>
+                <a href="/articles/${article.id}"><h5>${article.title}</h5></a>
                 <p>${article.text}</p>
-                <p>${article.userId}</p>
-                <p>${article.userName}</p>
+                <p>Автор статьи: ${article.userName}</p>
                 <form action="/myArticles/${article.id}/delete" method="post">
                     <input type="submit" value="Удалить">
                 </form>

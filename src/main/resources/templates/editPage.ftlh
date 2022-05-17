@@ -12,17 +12,19 @@
 </head>
 <body>
 <#macro content>
-    <form action="/profile/update" method="post">
-        <#assign i18Tooltip><@spring.message code="account.form.placeholder.name"/></#assign>
-        <@spring.formInput "userDto.name" "placeholder=${i18Tooltip}"/>
-        <@spring.showErrors "<br>" "errors"/>
+    <div class="content">
+        <form action="/profile/update" method="post">
+            <#assign i18Tooltip><@spring.message code="account.form.placeholder.name"/></#assign>
+            <@spring.formInput "userDto.name" "placeholder=${i18Tooltip}"/>
+            <@spring.showErrors "<br>" "errors"/>
 
-        <#assign i18Tooltip><@spring.message code="account.form.placeholder.password"/></#assign>
-        <@spring.formPasswordInput "userDto.password" "placeholder=${i18Tooltip}"/>
-        <@spring.showErrors "<br>" "errors"/>
+            <#assign i18Tooltip><@spring.message code="account.form.placeholder.password"/></#assign>
+            <@spring.formPasswordInput "userDto.password" "placeholder=${i18Tooltip}"/>
+            <@spring.showErrors "<br>" "errors"/>
 
-        <input type="submit" value="Сохранить">
-    </form>
+            <input type="submit" value="Сохранить">
+        </form>
+    </div>
 </#macro>
 </body>
 </html>

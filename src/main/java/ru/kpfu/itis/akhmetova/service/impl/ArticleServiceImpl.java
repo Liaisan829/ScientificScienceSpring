@@ -13,6 +13,7 @@ import ru.kpfu.itis.akhmetova.service.ArticleService;
 
 import java.util.List;
 
+import static ru.kpfu.itis.akhmetova.dto.ArticleDto.fromModel;
 import static ru.kpfu.itis.akhmetova.dto.ArticleDto.fromModelList;
 
 @RequiredArgsConstructor
@@ -58,4 +59,10 @@ public class ArticleServiceImpl implements ArticleService {
     public void deleteArticleById(Integer articleId) {
         articleRepository.deleteArticleById(articleId);
     }
+
+    @Override
+    public ArticleDto getArticleById(Integer articleId) {
+        return fromModel(articleRepository.getById(articleId));
+    }
+
 }

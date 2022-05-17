@@ -25,3 +25,8 @@ body {
 .articles .article button {
     margin: 5px;
 }
+
+.articles .article h5 {
+    font-size: 25px;
+    margin: 0;
+}
