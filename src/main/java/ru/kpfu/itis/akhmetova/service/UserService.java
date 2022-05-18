@@ -14,4 +14,6 @@ public interface UserService {
     List<UserDto> getAllUsers();
     UserDto addUser(UserDto userDto);
     UserDto getUserById(Integer userId);
+    void deleteUserById(Integer userId);
+    void updateState(String confirmCode);
 }

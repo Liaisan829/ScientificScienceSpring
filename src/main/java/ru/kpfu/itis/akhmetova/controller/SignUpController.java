@@ -36,9 +36,9 @@ public class SignUpController {
         return "redirect:/signIn";
     }
 
-//    @GetMapping(value="/confirm")
-//    public String accountVerified(@RequestParam(value="code") String confirmCode){
-//        accountService.updateState(confirmCode);
-//        return "verified";
-//    }
+    @GetMapping(value="/confirm")
+    public String accountVerified(@RequestParam(value="code") String confirmCode){
+        userService.updateState(confirmCode);
+        return "verified";
+    }
 }

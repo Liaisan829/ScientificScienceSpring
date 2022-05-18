@@ -13,7 +13,6 @@ import ru.kpfu.itis.akhmetova.model.User;
 import ru.kpfu.itis.akhmetova.security.details.AccountUserDetails;
 import ru.kpfu.itis.akhmetova.service.ArticleCommentService;
 import ru.kpfu.itis.akhmetova.service.ArticleService;
-import ru.kpfu.itis.akhmetova.service.UserService;
 
 import java.util.List;
 
@@ -41,7 +40,7 @@ public class ArticleController {
     @GetMapping(value = "/articles/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<ArticleDto> searchPostByTitle(@PathVariable("title") String title) {
-        return articleService.searchPostByTitle(title);
+        return articleService.searchArticleByTitle(title);
     }
 
     @GetMapping("/articles/{articleId}")

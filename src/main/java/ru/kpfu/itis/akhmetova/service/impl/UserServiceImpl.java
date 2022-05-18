@@ -1,14 +1,17 @@
 package ru.kpfu.itis.akhmetova.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.akhmetova.dto.SignUpForm;
 import ru.kpfu.itis.akhmetova.dto.UserDto;
+import ru.kpfu.itis.akhmetova.helper.AccountNotExistsException;
 import ru.kpfu.itis.akhmetova.model.User;
 import ru.kpfu.itis.akhmetova.repository.UserRepository;
 import ru.kpfu.itis.akhmetova.service.UserService;
+import ru.kpfu.itis.akhmetova.utils.EmailUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,8 +28,11 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-//    @Value("${server.port}")
-//    String userDto;
+    @Autowired
+    private EmailUtil emailUtil;
+
+    @Value("${server.port}")
+    String userDto;
 
     @Override
     public void signUp(SignUpForm form) {
@@ -41,14 +47,12 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(newUser);
 
-//        TODO
-//        HashMap<String, String> data = new HashMap<>();
-//        data.put("confirm_code", newUser.getConfirmCode());
-//        data.put("first_name", newUser.getName());
-//        data.put("port", userDto);
-//        emailUtil.sendMail(newUser.getEmail(), "confirm", "mails/confirm_mail.ftlh",
-//                data);
-//    }
+        HashMap<String, String> data = new HashMap<>();
+        data.put("confirm_code", newUser.getConfirmCode());
+        data.put("first_name", newUser.getName());
+        data.put("port", userDto);
+        emailUtil.sendMail(newUser.getEmail(), "confirm", "mails/confirm_mail.ftlh",
+                data);
     }
 
     @Override
@@ -74,12 +78,28 @@ public class UserServiceImpl implements UserService {
                         .email(userDto.getEmail())
                         .password(userDto.getPassword())
                         .role(User.Role.USER)
-                        .state(User.State.CONFIRMED)
+                        .state(User.State.NOT_CONFIRMED)
                         .build()));
     }
 
     @Override
     public UserDto getUserById(Integer userId) {
         return fromModel(userRepository.getById(userId));
+    }
+
+    @Override
+    public void deleteUserById(Integer userId) {
+        User user = userRepository.getById(userId);
+        userRepository.delete(user);
+    }
+
+    @Override
+    public void updateState(String confirmCode) {
+        User user = userRepository.findAllByConfirmCode(confirmCode);
+        if (user == null) {
+            throw new AccountNotExistsException();
+        }
+        user.setState(User.State.CONFIRMED);
+        userRepository.save(user);
     }
 }

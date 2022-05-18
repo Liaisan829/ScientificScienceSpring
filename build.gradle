@@ -16,6 +16,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security:2.6.5'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.5'
     implementation 'org.springframework.boot:spring-boot-starter-freemarker:2.6.5'
+    implementation "org.springframework.boot:spring-boot-starter-mail:2.6.3"
+    implementation 'javax.mail:javax.mail-api:1.6.2'
 
     implementation 'com.cloudinary:cloudinary-http44:1.32.0'
     implementation 'com.cloudinary:cloudinary-taglib:1.32.0'

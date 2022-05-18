@@ -10,6 +10,6 @@ public interface ArticleService {
     List<ArticleDto> getUserArticles(Integer userId);
     ArticleDto getArticleById(Integer articleId);
     void save(ArticleForm form, Integer userId);
-    List<ArticleDto> searchPostByTitle(String title);
+    List<ArticleDto> searchArticleByTitle(String title);
     void deleteArticleById(Integer articleId);
 }

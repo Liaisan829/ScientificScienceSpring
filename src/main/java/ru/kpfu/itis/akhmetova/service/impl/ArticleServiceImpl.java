@@ -50,7 +50,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleDto> searchPostByTitle(String title) {
+    public List<ArticleDto> searchArticleByTitle(String title) {
         return fromModelList(articleRepository.findAllByTitleLike('%' + title + '%'));
     }
 

@@ -28,7 +28,6 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
         Article article = articleRepository.getById(articleId);
         User user = userRepository.getById(userId);
 
-
         ArticleComment articleComment = ArticleComment.builder()
                 .text(form.getText())
                 .user(user)

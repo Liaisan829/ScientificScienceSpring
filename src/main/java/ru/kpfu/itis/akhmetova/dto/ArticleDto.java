@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.kpfu.itis.akhmetova.model.Article;
+import ru.kpfu.itis.akhmetova.model.ArticleComment;
 
 import java.util.List;
 import java.util.stream.Collectors;

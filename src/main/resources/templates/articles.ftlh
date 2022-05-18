@@ -8,6 +8,7 @@
     <#include "base.ftlh"/>
     <#import "/spring.ftl" as spring/>
     <#macro title>Статьи</#macro>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <link rel="stylesheet" href="styles/articles.css">
 </head>
 <body>
@@ -42,7 +43,6 @@
                     <#list articles as article>
                         <div class="article">
                             <a href="/articles/${article.id}"><h5>${article.title}</h5></a>
-<#--                            <p>${article.title}</p>-->
                             <p>${article.text}</p>
                             <p>Автор статьи: ${article.userName}</p>
                         </div>
@@ -88,6 +88,8 @@
             }
         }
         xmlhttp.open("GET", "/articles/" + title, true);
+        xmlhttp.OPENED;
+        xmlhttp.setRequestHeader('Content-type', 'application/json');
         xmlhttp.send();
     }
 </script>

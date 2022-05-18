@@ -9,13 +9,11 @@ import ru.kpfu.itis.akhmetova.dto.ArticleCommentForm;
 import ru.kpfu.itis.akhmetova.model.User;
 import ru.kpfu.itis.akhmetova.security.details.AccountUserDetails;
 import ru.kpfu.itis.akhmetova.service.ArticleCommentService;
-import ru.kpfu.itis.akhmetova.service.ArticleService;
 
 @Controller
 @RequiredArgsConstructor
 public class ArticleCommentController {
     private final ArticleCommentService articleCommentService;
-    private final ArticleService articleService;
 
     @PostMapping("/createComment/{articleId}")
     public String addComment(@PathVariable("articleId") Integer articleId, ArticleCommentForm form, Authentication authentication){
