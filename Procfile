@@ -1,0 +1,1 @@
+war: java _Dserver.port=$PORT $JAVA_OPTS -jar build/libs/ScientificScienceSpring-1.0-SNAPSHOT.jar
