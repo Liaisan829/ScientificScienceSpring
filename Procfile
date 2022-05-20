@@ -1,1 +1,1 @@
-war: java _Dserver.port=$PORT $JAVA_OPTS -jar build/libs/ScientificScienceSpring-1.0-SNAPSHOT.jar
+war: java _Dserver.port=$PORT $JAVA_OPTS git lfs fetch --all-jar build/libs/ScientificScienceSpring-1.0-SNAPSHOT.jar
