@@ -22,15 +22,15 @@ public class AdminRestController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
+    @DeleteMapping("admin/deleteUser/{userId}")
+    public void deleteTask(@PathVariable("userId") Integer userId) {
+        userService.deleteUserById(userId);
+    }
+
     @PostMapping(value = "/admin/addUser")
     public ResponseEntity<UserDto> addTasks(@RequestBody UserDto userDto) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(userService.addUser(userDto));
-    }
-
-    @DeleteMapping("admin/deleteUser/{userId}")
-    public void deleteTask(@PathVariable("userId") Integer userId) {
-        userService.deleteUserById(userId);
     }
 }
